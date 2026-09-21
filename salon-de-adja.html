@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon de Adja — Coiffure &amp; Beauté à Thiès</title>
+<meta name="description" content="Salon de Adja, salon de coiffure et de beauté à Keur Massamba Gueye, Thiès. Tresses, tissage, soins capillaires, maquillage. Prenez rendez-vous par WhatsApp, appel ou SMS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  /* ---------- Tokens ---------- */
+  :root{
+    --ivory: #FBF5EC;
+    --ivory-2: #F3E9D8;
+    --plum: #2B1826;
+    --plum-2: #3A2233;
+    --gold: #C1922F;
+    --gold-soft: #E4C77E;
+    --coral: #C6453B;
+    --ink: #241722;
+    --cream-ink: #F4E9D6;
+    --line: rgba(36,23,34,0.14);
+    --line-on-dark: rgba(244,233,214,0.22);
+
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --radius-s: 4px;
+    --radius-m: 10px;
+    --max-w: 1180px;
+
+    color-scheme: light;
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --ivory: #F1E7D6;
+      --ivory-2: #E9DCC4;
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]){
+      --ivory: #F1E7D6;
+      --ivory-2: #E9DCC4;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ivory: #F1E7D6;
+    --ivory-2: #E9DCC4;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg{ max-width:100%; display:block; }
+  a{ color: inherit; }
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0; padding:0; margin:-1px;
+  }
+  ::selection{ background: var(--gold-soft); color: var(--plum); }
+
+  .wrap{
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  h1,h2,h3{
+    font-family: var(--font-display);
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  p{ margin: 0; }
+
+  /* ---------- Braid divider (motif) ---------- */
+  .braid{
+    width: 100%;
+    height: 34px;
+    display: block;
+    overflow: hidden;
+    animation: waveDrift 8s ease-in-out infinite alternate;
+  }
+  .braid--tight{ height: 22px; }
+  .braid path{
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: waveFlow 6s linear infinite;
+    transform-origin: center;
+  }
+  .braid path:nth-child(2){
+    animation-duration: 8s;
+    animation-delay: .2s;
+    opacity: 0.7;
+  }
+  @keyframes waveFlow{
+    0% {
+      stroke-dasharray: 0 1000;
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dasharray: 800 1000;
+      stroke-dashoffset: -880;
+    }
+  }
+  @keyframes waveDrift{
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(2px); }
+    100% { transform: translateY(-2px); }
+  }
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(43,24,38,0.94);
+    backdrop-filter: blur(6px);
+    transition: box-shadow .3s ease;
+  }
+  .site-header.is-scrolled{
+    box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  }
+  .site-header .wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    height: 76px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    line-height: 1;
+    text-decoration:none;
+    color: var(--cream-ink);
+  }
+  .brand-mark{
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    overflow:hidden;
+    border: 2px solid rgba(244,233,214,0.38);
+    background: rgba(255,255,255,0.04);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    flex-shrink:0;
+  }
+  .brand-mark img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .brand-text{
+    display:flex;
+    flex-direction: column;
+  }
+  .brand-name{
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--gold-soft);
+  }
+  .brand-place{
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    margin-top: 4px;
+    color: var(--cream-ink);
+    opacity: 0.75;
+  }
+  .main-nav{
+    display:flex;
+    align-items:center;
+    gap: 30px;
+  }
+  .main-nav a{
+    text-decoration:none;
+    color: var(--cream-ink);
+    font-size: 0.95rem;
+    position:relative;
+    padding: 4px 0;
+  }
+  .main-nav a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-2px;
+    width:0; height:1px;
+    background: var(--gold-soft);
+    transition: width .25s ease;
+  }
+  .main-nav a:hover::after,
+  .main-nav a:focus-visible::after{ width:100%; }
+
+  .header-call{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    text-decoration:none;
+    color: var(--plum);
+    background: var(--gold-soft);
+    padding: 9px 16px;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .header-call:hover{ background: #EFD79A; transform: translateY(-1px); }
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color: var(--cream-ink);
+    padding: 6px;
+    cursor:pointer;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background: var(--plum);
+    color: var(--cream-ink);
+    padding: 150px 0 90px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image: radial-gradient(ellipse 60% 50% at 82% 18%, rgba(193,146,47,0.20), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items:end;
+  }
+  .hero-eyebrow{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--gold-soft);
+    font-size: 1.05rem;
+    opacity: 0;
+    animation: rise .7s ease forwards .05s;
+  }
+  .hero h1{
+    font-size: clamp(2.9rem, 6.2vw, 5.1rem);
+    line-height: 0.98;
+    margin-top: 14px;
+    opacity: 0;
+    animation: rise .8s ease forwards .18s;
+  }
+  .hero-lede{
+    max-width: 46ch;
+    margin-top: 22px;
+    font-size: 1.08rem;
+    color: rgba(244,233,214,0.82);
+    opacity: 0;
+    animation: rise .8s ease forwards .32s;
+  }
+  .hero-address{
+    display:flex;
+    gap: 10px;
+    align-items:flex-start;
+    margin-top: 26px;
+    font-size: 0.95rem;
+    color: var(--cream-ink);
+    opacity: 0;
+    animation: rise .8s ease forwards .42s;
+  }
+  .hero-address svg{ flex: none; margin-top: 3px; }
+  .hero-highlight{
+    display:flex;
+    align-items:center;
+    gap: 12px;
+    margin-top: 26px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(193,146,47,0.22), rgba(198,69,59,0.12));
+    border: 1px solid rgba(228,199,126,0.5);
+    box-shadow: 0 18px 40px rgba(17,11,15,0.18);
+    max-width: 480px;
+    opacity: 0;
+    animation: rise .8s ease forwards .48s;
+  }
+  .hero-highlight-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(244,233,214,0.14);
+    color: var(--gold-soft);
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  .hero-highlight strong{
+    display:block;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+  }
+  .hero-highlight span{
+    display:block;
+    margin-top: 4px;
+    font-size: 0.95rem;
+    color: var(--cream-ink);
+  }
+  .hero-ctas{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 12px;
+    margin-top: 34px;
+    opacity: 0;
+    animation: rise .8s ease forwards .56s;
+  }
+  .hero-panel{
+    position:relative;
+    opacity: 0;
+    animation: rise .9s ease forwards .3s;
+  }
+  .hero-visual{
+    position:relative;
+    border-radius: 18px;
+    overflow:hidden;
+    min-height: 420px;
+    border: 1px solid rgba(228,199,126,0.28);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.24);
+    background: #3A2233;
+  }
+  .hero-visual img{
+    width:100%;
+    height:100%;
+    min-height: 420px;
+    object-fit: cover;
+    display:block;
+    filter: saturate(0.9) contrast(1.05);
+  }
+  .hero-visual::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(43,24,38,0.08) 0%, rgba(43,24,38,0.72) 100%);
+  }
+  .hero-location-tag{
+    position:absolute;
+    left: 24px;
+    bottom: 24px;
+    z-index:1;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(43,24,38,0.72);
+    border: 1px solid rgba(244,233,214,0.24);
+    color: var(--cream-ink);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+  }
+
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(16px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-eyebrow,.hero h1,.hero-lede,.hero-address,.hero-ctas,.hero-panel{
+      animation: none !important; opacity:1 !important; transform:none !important;
+    }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 100px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration:none;
+    border: 1px solid transparent;
+    cursor:pointer;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{
+    background: var(--gold-soft);
+    color: var(--plum);
+  }
+  .btn-primary:hover{ background: #EFD79A; }
+  .btn-outline{
+    background: transparent;
+    border-color: var(--line-on-dark);
+    color: var(--cream-ink);
+  }
+  .btn-outline:hover{ border-color: var(--gold-soft); }
+  .btn-dark{
+    background: var(--plum);
+    color: var(--cream-ink);
+  }
+  .btn-dark:hover{ background: var(--plum-2); }
+
+  /* ---------- Sections generic ---------- */
+  section{ padding: 84px 0; }
+  .section-head{
+    max-width: 60ch;
+    margin-bottom: 46px;
+  }
+  .section-tag{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--coral);
+    font-size: 1.05rem;
+    display:block;
+    margin-bottom: 10px;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 3.6vw, 2.8rem);
+    color: var(--plum);
+  }
+
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(0);
+    transition: opacity .35s ease, transform .55s cubic-bezier(.22, 1, .36, 1);
+    will-change: transform, opacity;
+  }
+  .reveal--left{
+    transform: translate(-30px, 18px);
+  }
+  .reveal--right{
+    transform: translate(30px, 18px);
+  }
+  .reveal--scale{
+    transform: scale(.92) translateY(18px);
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- About ---------- */
+  .about{
+    background: var(--ivory);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items:start;
+  }
+  .about-lede{
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--plum);
+  }
+  .about-text{
+    margin-top: 20px;
+    color: rgba(36,23,34,0.78);
+    max-width: 52ch;
+  }
+  .values{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    flex-direction:column;
+  }
+  .values li{
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+    display:flex;
+    gap:16px;
+    align-items:baseline;
+  }
+  .values li:last-child{ border-bottom: 1px solid var(--line); }
+  .values .v-name{
+    font-family: var(--font-display);
+    font-weight:600;
+    color: var(--plum);
+    min-width: 150px;
+  }
+  .values .v-desc{
+    color: rgba(36,23,34,0.72);
+    font-size: 0.96rem;
+  }
+
+  /* ---------- Services ---------- */
+  .services{
+    background: var(--plum);
+    color: var(--cream-ink);
+  }
+  .services .section-tag{ color: var(--gold-soft); }
+  .services .section-head h2{ color: var(--cream-ink); }
+  .service-list{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 56px;
+  }
+  .service-row{
+    display:flex;
+    justify-content:space-between;
+    gap: 18px;
+    padding: 20px 0;
+    border-top: 1px solid var(--line-on-dark);
+  }
+  .service-list .service-row:nth-child(1),
+  .service-list .service-row:nth-child(2){ border-top: none; }
+  .service-name{
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+  }
+  .service-note{
+    font-size: 0.85rem;
+    color: rgba(244,233,214,0.6);
+    margin-top: 4px;
+  }
+  .services-note{
+    margin-top: 30px;
+    font-size: 0.88rem;
+    color: rgba(244,233,214,0.6);
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery{ background: var(--ivory-2); }
+  .gallery-slider{
+    position:relative;
+    overflow:hidden;
+    padding-bottom: 8px;
+  }
+  .gallery-grid{
+    display:flex;
+    width:max-content;
+    gap: 18px;
+    animation: galleryScroll 24s linear infinite;
+    will-change: transform;
+  }
+  .gallery-slider:hover .gallery-grid{ animation-play-state: paused; }
+  .swatch{
+    position:relative;
+    flex: 0 0 260px;
+    aspect-ratio: 3/4;
+    border-radius: var(--radius-m);
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding: 16px;
+    background: #3A2233;
+  }
+  .swatch img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .swatch::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(20,12,18,0.08), rgba(20,12,18,0.38));
+  }
+  .swatch span{
+    position:relative;
+    z-index:1;
+    color: var(--cream-ink);
+    font-family: var(--font-display);
+    font-size: 1rem;
+  }
+  @keyframes galleryScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ---------- Location ---------- */
+  .location{
+    background: var(--ivory);
+  }
+  .location-grid{
+    display:flex;
+    gap: 42px;
+    align-items:stretch;
+  }
+  .contact-left{
+    flex: 1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap: 20px;
+  }
+  .label-tag{
+    display:inline-flex;
+    align-self:flex-start;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(198,69,59,0.08);
+    color: var(--coral);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .section-title{
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 0.96;
+    color: var(--plum);
+    letter-spacing: -0.05em;
+  }
+  .section-title em{
+    font-style: italic;
+    color: var(--coral);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .section-sub{
+    color: rgba(36,23,34,0.72);
+    max-width: 42ch;
+    font-size: 1rem;
+  }
+  .map-container{
+    flex: 1.2;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+    justify-content:center;
+  }
+  .map-container .contact-map,
+  .map-container .map-frame,
+  .map-container .map-link {
+    width:100%;
+  }
+  .map-container .contact-map{
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+    margin-top: 0;
+  }
+  .map-container .map-frame{
+    position:relative;
+    overflow:hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(36,23,34,0.08);
+    box-shadow: 0 18px 38px rgba(35,18,27,0.12);
+    background: rgba(36,23,34,0.02);
+  }
+  .map-container .map-frame iframe{
+    display:block;
+    width:100%;
+    min-height: 260px;
+    height: 310px;
+    border:0;
+    background: #f4efe7;
+    filter: saturate(0.92) contrast(1.08);
+  }
+  .map-container .map-link{
+    align-self:flex-start;
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: rgba(198,69,59,0.08);
+    border: 1px solid rgba(198,69,59,0.16);
+    color: var(--plum);
+    text-decoration:none;
+    font-weight:700;
+    transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .map-container .map-link:hover{
+    transform: translateY(-1px);
+    background: rgba(198,69,59,0.12);
+    border-color: rgba(198,69,59,0.24);
+  }
+  .contact-item{
+    display:flex;
+    align-items:flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+  }
+  .contact-item:last-of-type{ border-bottom: 1px solid var(--line); }
+  .contact-icon{
+    width: 42px; height:42px;
+    flex:none;
+    border-radius: 50%;
+    background: rgba(193,146,47,0.12);
+    color: var(--plum);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-item-body{
+    display:flex;
+    flex-direction:column;
+    gap: 4px;
+    color: var(--plum);
+  }
+  .contact-item-body strong{
+    font-size: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(36,23,34,0.7);
+  }
+  .contact-item-body span,
+  .contact-item-body a{
+    text-decoration:none;
+    color: var(--plum);
+    font-size: 0.98rem;
+  }
+  .cta-phone{
+    margin-top: 8px;
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    width:max-content;
+    padding: 14px 22px;
+    border-radius: 999px;
+    background: var(--plum);
+    color: var(--cream-ink);
+    text-decoration:none;
+    font-weight:600;
+    box-shadow: 0 12px 28px rgba(43,24,38,0.14);
+    transition: transform .2s ease, background .2s ease;
+  }
+  .cta-phone:hover{ background: var(--plum-2); transform: translateY(-2px); }
+  .map-container{
+    flex: 1.2;
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+    justify-content:center;
+  }
+  .map-link{
+    align-self:flex-end;
+    text-decoration:none;
+    font-weight:600;
+    color: var(--plum);
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(36,23,34,0.1);
+    background: rgba(255,255,255,0.35);
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .map-link:hover{
+    transform: translateY(-1px);
+    border-color: rgba(36,23,34,0.2);
+  }
+  .hours-list{
+    list-style:none;
+    margin: 22px 0 0;
+    padding:0;
+  }
+  .hours-list li{
+    display:flex;
+    justify-content:space-between;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .hours-list li:last-child{ border-bottom: 1px solid var(--line); }
+  .hours-list .day{ color: var(--plum); font-weight:600; }
+  .hours-list .time{ color: rgba(36,23,34,0.7); }
+  .location-actions{
+    display:flex;
+    gap: 12px;
+    margin-top: 26px;
+    flex-wrap:wrap;
+  }
+  .location-actions .btn-primary{
+    background: var(--plum);
+    color: var(--cream-ink);
+  }
+  .location-actions .btn-primary:hover{ background: var(--plum-2); }
+  .location-actions .btn-outline{
+    border-color: var(--line);
+    color: var(--plum);
+  }
+  .location-actions .btn-outline:hover{ border-color: var(--coral); }
+
+  /* ---------- Contact ---------- */
+  .contact{
+    background: var(--plum);
+    color: var(--cream-ink);
+  }
+  .contact .section-tag{ color: var(--gold-soft); }
+  .contact .section-head h2{ color: var(--cream-ink); }
+  .contact-cards{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .contact-card{
+    background: rgba(244,233,214,0.05);
+    border: 1px solid var(--line-on-dark);
+    border-radius: var(--radius-m);
+    padding: 28px 24px;
+    text-decoration:none;
+    color: var(--cream-ink);
+    display:flex;
+    flex-direction:column;
+    gap: 16px;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .contact-card:hover{
+    border-color: var(--gold-soft);
+    background: rgba(244,233,214,0.08);
+    transform: translateY(-3px);
+  }
+  .contact-icon{
+    width: 42px; height:42px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    color: var(--plum);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card h3{
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+  }
+  .contact-card p{
+    font-size: 0.9rem;
+    color: rgba(244,233,214,0.7);
+  }
+  .contact-card .cc-value{
+    margin-top: auto;
+    font-weight:600;
+    font-size: 0.95rem;
+    color: var(--gold-soft);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background: var(--ink);
+    color: rgba(244,233,214,0.65);
+    padding: 46px 0 30px;
+    font-size: 0.85rem;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap: 24px;
+    flex-wrap:wrap;
+  }
+  .footer-brand{
+    font-family: var(--font-display);
+    font-style: italic;
+    color: var(--gold-soft);
+    font-size: 1.2rem;
+  }
+  footer .foot-links{
+    display:flex;
+    gap: 22px;
+    list-style:none;
+    padding:0; margin:0;
+  }
+  footer a{ text-decoration:none; color: inherit; }
+  footer a:hover{ color: var(--gold-soft); }
+  .footer-bottom{
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(244,233,214,0.12);
+  }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .float-wa{
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 90;
+    width: 56px; height:56px;
+    border-radius: 50%;
+    background: var(--gold-soft);
+    color: var(--plum);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    transition: transform .2s ease;
+  }
+  .float-wa:hover{ transform: scale(1.06); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    .hero-inner{ grid-template-columns: 1fr; }
+    .hero-panel{ order:-1; max-width: 320px; }
+    .about-grid{ grid-template-columns: 1fr; gap: 34px; }
+    .location-grid{ display:flex; flex-direction:column; gap: 34px; }
+    .service-list{ grid-template-columns: 1fr; }
+    .gallery-grid{ grid-template-columns: repeat(2, 1fr); }
+    .contact-cards{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 720px){
+    .main-nav, .header-call{ display:none; }
+    .site-header.nav-open .main-nav{
+      display:flex;
+      position:absolute;
+      top: 76px; left:0; right:0;
+      background: var(--plum);
+      flex-direction:column;
+      padding: 20px 28px 26px;
+      gap: 18px;
+      border-top: 1px solid var(--line-on-dark);
+    }
+    .site-header.nav-open .header-call{
+      display:inline-flex;
+      margin: 0 28px 22px;
+    }
+    .nav-toggle{ display:inline-flex; }
+    section{ padding: 60px 0; }
+    .hero{ padding: 128px 0 64px; }
+  }
+  @media (max-width: 480px){
+    .wrap{ padding: 0 20px; }
+    .gallery-grid{ grid-template-columns: 1fr 1fr; }
+    .values .v-name{ min-width: 110px; }
+  }
+
+  :is(a,button):focus-visible{
+    outline: 2px solid var(--coral);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Salon de Adja">
+      <span class="brand-mark">
+        <img src="images/logo.jpeg" alt="Logo Salon de Adja" />
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Salon de Adja</span>
+        <span class="brand-place">Keur Massamba Gueye · Thiès</span>
+      </span>
+    </a>
+    <nav class="main-nav" id="mainNav" aria-label="Navigation principale">
+      <a href="#apropos">Le salon</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#localisation">Localisation</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+221781830207" class="header-call">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1L6.6 10.8z" fill="currentColor"/></svg>
+      78 183 02 07
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="hero-eyebrow">Coiffure &amp; beauté</span>
+        <h1>Salon de<br>Adja</h1>
+        <p class="hero-lede">Tresses, tissage, soins capillaires et beauté du regard, dans un salon chaleureux au cœur de Keur Massamba Gueye. Chaque tête repart coiffée avec soin, chaque cliente repart confiante.</p>
+        <p class="hero-address">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" stroke="var(--gold-soft)" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.4" stroke="var(--gold-soft)" stroke-width="1.6"/></svg>
+          Keur Massamba Gueye, Thiès, Sénégal
+        </p>
+        <div class="hero-highlight" aria-label="Formation en coiffure">
+          <div class="hero-highlight-badge">★</div>
+          <div>
+            <strong>Formation</strong>
+            <span>Inscription : 50 000 FCFA • 25 000 FCFA / mois</span>
+          </div>
+        </div>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://wa.me/221781830207?text=Bonjour%20Adja%2C%20je%20souhaite%20prendre%20rendez-vous" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.7-1.2A9 9 0 1 0 12 3z" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 8.6c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.4.2.5.7 1.6.7 1.8.1.1.1.3 0 .4-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.4.9 1.4 1.9 2.2 1.3 1.1 2.3 1.4 2.6 1.6.3.2.5.1.7-.1l.6-.7c.2-.3.4-.2.7-.1l1.7.8c.2.1.4.2.4.4.1.5-.1 1.4-.7 1.9-.5.5-1.5.9-2.7.6-1.6-.4-3.6-1.3-5.4-3-1.6-1.5-2.6-3.1-3-4.6-.3-1.2 0-2.2.4-2.7z" fill="currentColor"/></svg>
+            WhatsApp
+          </a>
+          <a class="btn btn-outline" href="tel:+221781830207">Appeler</a>
+          <a class="btn btn-outline" href="sms:+221781830207">SMS</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-visual">
+          <img src="images/accueil.jpeg" alt="Keur Massamba Gueye, Thiès" />
+          <span class="hero-location-tag">ADJA BEAUTY</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="braid" viewBox="0 0 400 34" preserveAspectRatio="none" aria-hidden="true">
+    <rect width="400" height="34" fill="var(--ivory)"/>
+    <path d="M0,17 C33,2 67,32 100,17 C133,2 167,32 200,17 C233,2 267,32 300,17 C333,2 367,32 400,17" stroke="var(--gold)" stroke-width="2" fill="none"/>
+    <path d="M0,17 C33,32 67,2 100,17 C133,32 167,2 200,17 C233,32 267,2 300,17 C333,32 367,2 400,17" stroke="var(--coral)" stroke-width="1.6" fill="none" opacity="0.55"/>
+  </svg>
+
+  <!-- ================= À PROPOS ================= -->
+  <section class="about" id="apropos">
+    <div class="wrap about-grid">
+      <div>
+        <span class="section-tag">Le salon</span>
+        <p class="about-lede">Un salon pensé comme une pause : on y vient pour la coiffure, on en repart apaisée.</p>
+        <p class="about-text">Depuis Keur Massamba Gueye, Adja et son équipe reçoivent chaque cliente avec la même attention : écouter l'envie du jour, protéger la santé du cheveu et prendre le temps qu'il faut, sans jamais bâcler un geste.</p>
+      </div>
+      <ul class="values">
+        <li><span class="v-name">Écoute</span><span class="v-desc">Chaque coiffure part d'une discussion sur vos envies et l'état de vos cheveux.</span></li>
+        <li><span class="v-name">Hygiène</span><span class="v-desc">Matériel désinfecté et produits de soin adaptés à chaque type de cheveu.</span></li>
+        <li><span class="v-name">Savoir-faire</span><span class="v-desc">Des techniques de tresses et de tissage maîtrisées, sans tirer ni abîmer.</span></li>
+        <li><span class="v-name">Ponctualité</span><span class="v-desc">Un rendez-vous pris est un rendez-vous respecté, à l'heure convenue.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= PRESTATIONS ================= -->
+  <section class="services" id="prestations">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Prestations</span>
+        <h2>Ce que fait le salon</h2>
+      </div>
+      <div class="service-list">
+        <div class="service-row">
+          <div><div class="service-name">Coiffure personnalisée</div><div class="service-note">Styles sur mesure selon vos envies et votre morphologie</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Formation</div><div class="service-note">Apprentissage pratique en coiffure et soins capillaires</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Pose de cils</div><div class="service-note">Look naturel, élégant et durable</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Ongles</div><div class="service-note">Pose, finition et soins pour des ongles impeccables</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Soin de perruques</div><div class="service-note">Nettoyage, entretien et remise en beauté</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Tresse</div><div class="service-note">Modèles variés, soignés et parfaitement finitionnés</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Teinture</div><div class="service-note">Coloration douce et éclat maîtrisé</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Henné</div><div class="service-note">Soins traditionnels et esthétiques pour la beauté naturelle</div></div>
+        </div>
+        <div class="service-row">
+          <div><div class="service-name">Autres</div><div class="service-note">Services de beauté et coiffure selon vos besoins</div></div>
+        </div>
+      </div>
+      <p class="services-note">Nous pouvons aussi nous déplacer pour tout événement, selon votre lieu et votre demande, pour vous offrir un service sur mesure en toute simplicité.</p>
+    </div>
+  </section>
+
+  <svg class="braid braid--tight" viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
+    <rect width="400" height="22" fill="var(--ivory-2)"/>
+    <path d="M0,11 C33,1 67,21 100,11 C133,1 167,21 200,11 C233,1 267,21 300,11 C333,1 367,21 400,11" stroke="var(--gold)" stroke-width="1.6" fill="none" opacity="0.7"/>
+  </svg>
+
+  <!-- ================= GALERIE ================= -->
+  <section class="gallery" id="galerie">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Ambiance</span>
+        <h2>Un aperçu du salon</h2>
+      </div>
+      <div class="gallery-slider">
+        <div class="gallery-grid" aria-label="Galerie photos du salon">
+          <div class="swatch">
+            <img src="images/tresses.jpeg" alt="Tresses" />
+            <span>Tresses</span>
+          </div>
+          <div class="swatch">
+            <img src="images/ainee.jpeg" alt="Tissage" />
+            <span>Tissage</span>
+          </div>
+          <div class="swatch">
+            <img src="images/soin.jpeg" alt="Soins" />
+            <span>Soins</span>
+          </div>
+          <div class="swatch">
+            <img src="images/maquillage.jpeg" alt="Maquillage" />
+            <span>Maquillage</span>
+          </div>
+          <div class="swatch">
+            <img src="images/petit_tete.jpeg" alt="Petit tête" />
+            <span>Petit tête</span>
+          </div>
+          <div class="swatch">
+            <img src="images/pose_cils.jpeg" alt="Pose de cils" />
+            <span>Pose de cils</span>
+          </div>
+          <div class="swatch">
+            <img src="images/tresse.jpeg" alt="Tresse" />
+            <span>Tresse</span>
+          </div>
+          <div class="swatch">
+            <img src="images/tresses.jpeg" alt="Tresses" />
+            <span>Tresses</span>
+          </div>
+          <div class="swatch">
+            <img src="images/ainee.jpeg" alt="Tissage" />
+            <span>Tissage</span>
+          </div>
+          <div class="swatch">
+            <img src="images/soin.jpeg" alt="Soins" />
+            <span>Soins</span>
+          </div>
+          <div class="swatch">
+            <img src="images/maquillage.jpeg" alt="Maquillage" />
+            <span>Maquillage</span>
+          </div>
+          <div class="swatch">
+            <img src="images/petit_tete.jpeg" alt="Petit tête" />
+            <span>Petit tête</span>
+          </div>
+          <div class="swatch">
+            <img src="images/pose_cils.jpeg" alt="Pose de cils" />
+            <span>Pose de cils</span>
+          </div>
+          <div class="swatch">
+            <img src="images/tresse.jpeg" alt="Tresse" />
+            <span>Tresse</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LOCALISATION ================= -->
+  <section class="location" id="localisation">
+    <div class="wrap location-grid">
+      <div class="contact-left reveal reveal--left">
+        <div class="label-tag">Nous contacter</div>
+        <h2 class="section-title">Venez Nous<br><em>Rendre Visite</em></h2>
+        <p class="section-sub">Notre salon est ouvert 6 jours sur 7. Venez nous voir ou appelez directement pour un rendez-vous.</p>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="contact-item-body">
+            <strong>Téléphone</strong>
+            <a href="tel:+221781830207">+221 78 183 02 07</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <div class="contact-item-body">
+            <strong>WhatsApp</strong>
+            <a href="https://wa.me/221781830207" target="_blank" rel="noopener">+221 78 183 02 07</a>
+          </div>
+        </div>
+
+        <a href="tel:+221781830207" class="cta-phone">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          +221 78 183 02 07
+        </a>
+      </div>
+
+      <div class="map-container reveal reveal--right">
+        <div class="contact-map">
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3858.2744975797746!2d-16.947311999999997!3d14.753559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTTCsDQ1JzEyLjgiTiAxNsKwNTYnNTAuMyJX!5e0!3m2!1sfr!2ssn!4v1789844209838!5m2!1sfr!2ssn"
+              title="Localisation sur Google Maps"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+          </div>
+          <a class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=14.753559,-16.947312"
+            target="_blank" rel="noopener">
+            Ouvrir dans Google Maps →
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-tag">Rendez-vous</span>
+        <h2>Contacter le salon</h2>
+      </div>
+      <div class="contact-cards">
+        <a class="contact-card" href="https://wa.me/221781830207?text=Bonjour%20Adja%2C%20je%20souhaite%20prendre%20rendez-vous" target="_blank" rel="noopener">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.7-1.2A9 9 0 1 0 12 3z" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <h3>WhatsApp</h3>
+          <p>Le plus rapide pour réserver, envoyer une photo de la coiffure souhaitée ou poser une question.</p>
+          <span class="cc-value">+221 78 183 02 07</span>
+        </a>
+        <a class="contact-card" href="tel:+221781830207">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1L6.6 10.8z" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+          </span>
+          <h3>Téléphone</h3>
+          <p>Pour un échange direct ou une réservation le jour même.</p>
+          <span class="cc-value">+221 78 183 02 07</span>
+        </a>
+        <a class="contact-card" href="sms:+221781830207">
+          <span class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H8l-4 4V4z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          </span>
+          <h3>SMS</h3>
+          <p>Si un appel n'est pas possible, un message suffit pour convenir d'un créneau.</p>
+          <span class="cc-value">+221 78 183 02 07</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">Salon de Adja</div>
+      <p style="margin-top:8px;">Keur Massamba Gueye, Thiès, Sénégal</p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="#apropos">Le salon</a></li>
+      <li><a href="#prestations">Prestations</a></li>
+      <li><a href="#localisation">Localisation</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="wrap footer-bottom">
+    © <span id="year"></span> Salon de Adja. Tous droits réservés.
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/221781830207?text=Bonjour%20Adja%2C%20je%20souhaite%20prendre%20rendez-vous" target="_blank" rel="noopener" aria-label="Contacter sur WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.4L3 21l4.7-1.2A9 9 0 1 0 12 3z" stroke="currentColor" stroke-width="1.6"/><path d="M8.5 8.6c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.4.2.5.7 1.6.7 1.8.1.1.1.3 0 .4-.1.2-.1.3-.3.5l-.4.5c-.1.2-.3.3-.1.6.2.4.9 1.4 1.9 2.2 1.3 1.1 2.3 1.4 2.6 1.6.3.2.5.1.7-.1l.6-.7c.2-.3.4-.2.7-.1l1.7.8c.2.1.4.2.4.4.1.5-.1 1.4-.7 1.9-.5.5-1.5.9-2.7.6-1.6-.4-3.6-1.3-5.4-3-1.6-1.5-2.6-3.1-3-4.6-.3-1.2 0-2.2.4-2.7z" fill="currentColor"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('is-scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  var toggle = document.getElementById('navToggle');
+  toggle.addEventListener('click', function(){
+    var open = header.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.main-nav a').forEach(function(a){
+    a.addEventListener('click', function(){
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  var galleryGrid = document.querySelector('.gallery-grid');
+  var gallerySlides = Array.from(document.querySelectorAll('.gallery-grid .swatch'));
+  if (galleryGrid && gallerySlides.length) {
+    gallerySlides.forEach(function(slide){
+      var clone = slide.cloneNode(true);
+      galleryGrid.appendChild(clone);
+    });
+  }
+
+  var revealItems = document.querySelectorAll('.section-head, .service-row, .swatch, .contact-card, .contact-item, .map-container, .contact-left, .values li, .about-lede, .about-text');
+  revealItems.forEach(function(item, index){
+    item.classList.add('reveal');
+
+    if (index % 3 === 0) item.classList.add('reveal--left');
+    else if (index % 3 === 1) item.classList.add('reveal--right');
+    else item.classList.add('reveal--scale');
+
+    item.style.transitionDelay = (index * 35) + 'ms';
+  });
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -2% 0px'
+  });
+
+  revealItems.forEach(function(item){
+    revealObserver.observe(item);
+  });
+</script>
+
+</body>
+</html>
